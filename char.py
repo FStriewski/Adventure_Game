@@ -15,7 +15,7 @@ class Character():
         self.strength = strength
         self.inventory = inventory
         self.description = '''You are an adventurer with no specific
-        traits but better stats'''
+        traits but better stats.'''
 
     def stats(self):
         print('--> Name: "{}" Class: "*{}*" \nLife: [{}] Strength: [{}]\n'.format(
@@ -39,7 +39,7 @@ class Mechanic(Character):
         self.life = 50
         self.strength = self.strength - 2
         self.description = '''You are good with fixing things,
-        especially with your favorite tool, the hammer.'''
+        especially with your favorite tool, the handy hammer(TM).'''
 
 
 class Zookeeper(Character):
@@ -49,5 +49,23 @@ class Zookeeper(Character):
         self.inventory = ['Mouse']
         self.life = 40
         self.strength = self.strength - 3
-        self.description = '''You work the Zooshop day and night with your
-        companion "Manny the Mouse"'''
+        self.description = '''You work the Zooshop day and night only accompanied
+        by your pet companion "Manny the Mouse".'''
+
+
+def char_selector():
+    char_selection = input('''--> Select a character: \n
+      A) The Adventurer \n
+      B) The Mechanic \n
+      C) The Zookeeper \n
+      ''')
+
+    if (char_selection.upper() == 'A'):
+        return Character()
+    elif (char_selection.upper() == 'B'):
+        return Mechanic()
+    elif (char_selection.upper() == 'C'):
+        return Zookeeper()
+    else:
+        print('Input must be A, B or C')
+        char_selector()

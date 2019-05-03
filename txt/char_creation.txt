@@ -1,0 +1,4 @@
+#Text used for character creation
+{CC01}You are an adventurer with no specific traits but better stats.
+{CC02}You are good with fixing things, especially with your favorite tool, a Hardy hammer(TM).
+{CC03}You work the Zooshop day and night only accompanied by your pet companion "Manny the Mouse".
