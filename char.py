@@ -15,13 +15,13 @@ class Character():
         self.inventory = inventory
         self.description = '''You are an adventurer with no specific
         traits but better stats.'''
+        self.name = input('Enter a name: \n')
 
     def stats(self):
-        print('''--> Name: "{}" Class: "*{}*" \nLife: [{}]
-              Strength: [{}]\n'''.format(self.name,
+        print('''--> Name: "{}" Class: "*{}*"
+              \nLife: [{}] Strength: [{}]\n'''.format(self.name,
               self.type,
-              self.life,
-              self.strength))
+              self.life, self.strength))
 
     def print_inventory(self):
         print('--> Inventory: {}\n'.format(self.inventory))
