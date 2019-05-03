@@ -10,7 +10,6 @@ class Character():
                  inventory: list = [],
                  ) -> None:
         self.type = 'Adventurer'
-        self.name = name
         self.life = life
         self.strength = strength
         self.inventory = inventory
@@ -18,8 +17,8 @@ class Character():
         traits but better stats.'''
 
     def stats(self):
-        print('--> Name: "{}" Class: "*{}*" \nLife: [{}] Strength: [{}]\n'.format(
-              self.name,
+        print('''--> Name: "{}" Class: "*{}*" \nLife: [{}]
+              Strength: [{}]\n'''.format(self.name,
               self.type,
               self.life,
               self.strength))
@@ -43,29 +42,28 @@ class Mechanic(Character):
 
 
 class Zookeeper(Character):
-    def __init_(self):
+    def __init__(self):
         super().__init__()
         self.type = 'Zookeeper'
         self.inventory = ['Mouse']
         self.life = 40
         self.strength = self.strength - 3
-        self.description = '''You work the Zooshop day and night only accompanied
-        by your pet companion "Manny the Mouse".'''
+        self.description = '''You work the Zooshop day and night only
+        accompanied by your pet companion "Manny the Mouse".'''
 
 
 def char_selector():
-    char_selection = input('''--> Select a character: \n
-      A) The Adventurer \n
-      B) The Mechanic \n
-      C) The Zookeeper \n
-      ''')
+    char_selection = ''
+    while char_selection.upper() not in ['A', 'B', 'C']:
+        char_selection = input('''--> Select a character: \n
+        A) The Adventurer \n
+        B) The Mechanic \n
+        C) The Zookeeper \n
+        ''')
 
-    if (char_selection.upper() == 'A'):
-        return Character()
-    elif (char_selection.upper() == 'B'):
-        return Mechanic()
-    elif (char_selection.upper() == 'C'):
-        return Zookeeper()
-    else:
-        print('Input must be A, B or C')
-        char_selector()
+        if (char_selection.upper() == 'A'):
+            return Character()
+        elif (char_selection.upper() == 'B'):
+            return Mechanic()
+        elif (char_selection.upper() == 'C'):
+            return Zookeeper()
