@@ -3,9 +3,15 @@ import os
 from time import sleep
 
 
+def find_line(key, path):
+    return [line for line in path if key in line]
+
+
 def read(path, key):
     with open(path, 'r') as file:
-        print(file.readlines())
+        for line in find_line(key, file):
+            text = line[6:]
+            print(text)
 
 
 def timeout(s):
