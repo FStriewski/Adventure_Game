@@ -3,3 +3,5 @@ HowTo
 __pycache__
 HowTo.txt
 .vscode
+../ideas.txt
+../rooms.graphml
