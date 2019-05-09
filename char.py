@@ -11,6 +11,7 @@ class Character():
                  ) -> None:
         self.type = 'Adventurer'
         self.life = life
+        self.initial_life = self.life
         self.strength = strength
         self.inventory = inventory
         self.description = '''You are an adventurer with no specific
@@ -19,15 +20,23 @@ class Character():
 
     def stats(self):
         print('''--> Name: "{}" Class: "*{}*"
-              \nLife: [{}] Strength: [{}]\n'''.format(self.name,
-              self.type,
-              self.life, self.strength))
+              \nLife: [{}/{}] Strength: [{}]\n'''.format(self.name,
+              self.type, self.life,
+              self.initial_life, self.strength))
 
     def print_inventory(self):
         print('--> Inventory: {}\n'.format(self.inventory))
 
     def print_description(self):
         print('--> {}\n'.format(self.description))
+
+    def take_hit(self, value):
+        self.life -= value
+        if(self.life > 0):
+            print('Hit! You have {}/{} health left.'
+                  .format(self.life, self.inital_life))
+        else:
+            print('You have been wounded fatally. Game over...')
 
 
 class Mechanic(Character):
@@ -36,6 +45,7 @@ class Mechanic(Character):
         self.type = 'Mechanic'
         self.inventory = ['Hammer']
         self.life = 50
+        self.initial_life = self.life
         self.strength = self.strength - 2
         self.description = '''You are good with fixing things,
         especially with your favorite tool, the handy hammer(TM).'''
@@ -47,6 +57,7 @@ class Zookeeper(Character):
         self.type = 'Zookeeper'
         self.inventory = ['Mouse']
         self.life = 40
+        self.initial_life = self.life
         self.strength = self.strength - 3
         self.description = '''You work the Zooshop day and night only
         accompanied by your pet companion "Manny the Mouse".'''

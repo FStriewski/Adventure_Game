@@ -10,5 +10,6 @@ reader.read('./txt/story_line.txt', '{SL01}')
 # character.stats()
 # character.print_description()
 # character.print_inventory()
-
-Monster.take_hit()
+current_monster = Monster()
+current_monster.take_hit(4)
+current_monster.take_hit(20)
