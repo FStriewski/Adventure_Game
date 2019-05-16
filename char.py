@@ -9,13 +9,13 @@ class Character():
                  strength: int = 10 + dice.dice_d(3, 3),
                  inventory: list = [],
                  ) -> None:
-        self.type = 'Adventurer'
+        self.type = 'Coach'
         self.life = life
         self.initial_life = self.life
         self.strength = strength
         self.inventory = inventory
-        self.description = '''You are an adventurer with no specific
-        traits but better stats.'''
+        self.description = '''Your active years might reach a while back but
+        you are still fitter than most people your age.'''
         self.name = input('Enter a name: \n')
 
     def stats(self):
