@@ -4,24 +4,24 @@ import dice
 
 class Character():
     def __init__(self,
-                 name: str = '',
+                 player_class: str,
                  life: int = 60,
                  strength: int = 10 + dice.dice_d(3, 3),
                  inventory: list = [],
+                 description: str = ''
                  ) -> None:
-        self.type = 'Coach'
+        self.player_class = player_class
+        self.name = input('Enter a name: \n')
         self.life = life
         self.initial_life = self.life
-        self.strength = strength
         self.inventory = inventory
-        self.description = '''Your active years might reach a while back but
-        you are still fitter than most people your age.'''
-        self.name = input('Enter a name: \n')
+        self.strength = strength
+        self.description = description
 
     def stats(self):
         print('''--> Name: "{}" Class: "*{}*"
               \nLife: [{}/{}] Strength: [{}]\n'''.format(self.name,
-              self.type, self.life,
+              self.player_class, self.life,
               self.initial_life, self.strength))
 
     def print_inventory(self):
@@ -39,27 +39,11 @@ class Character():
             print('You have been wounded fatally. Game over...')
 
 
-class Mechanic(Character):
-    def __init__(self):
-        super().__init__()
-        self.type = 'Mechanic'
-        self.inventory = ['Hammer']
-        self.life = 50
-        self.initial_life = self.life
-        self.strength = self.strength - 2
-        self.description = '''You are good with fixing things,
-        especially with your favorite tool, the handy hammer(TM).'''
-
-
-class Zookeeper(Character):
-    def __init__(self):
-        super().__init__()
-        self.type = 'Zookeeper'
-        self.inventory = ['Mouse']
-        self.life = 40
-        self.initial_life = self.life
-        self.strength = self.strength - 3
-        self.description = '''You work the Zooshop day and night only
+coach_description = '''Your active years might reach a while back but
+        you are still fitter than most people your age.'''
+mechanic_description = '''You are good with fixing things,
+        especially with your favorite tool, the Fixxer(TM) Multitool.'''
+zookeeper_description = '''You work the Petshop day and night only
         accompanied by your pet companion "Manny the Mouse".'''
 
 
@@ -73,8 +57,8 @@ def char_selector():
         ''')
 
         if (char_selection.upper() == 'A'):
-            return Character()
+            return Character('Coach', 60, 60, [], coach_description)
         elif (char_selection.upper() == 'B'):
-            return Mechanic()
+            return Character('Mechanic', 50, 40, ['Multitool'], mechanic_description)
         elif (char_selection.upper() == 'C'):
-            return Zookeeper()
+            return Character('Zookeeper', 40, 30, ['Mouse'],  zookeeper_description)
