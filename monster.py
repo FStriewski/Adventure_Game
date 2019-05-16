@@ -2,11 +2,11 @@ import dice
 
 
 class Monster():
-    def __init__(self):
-        self.life = 5
+    def __init__(self, life, strength, inventory):
+        self.life = life
         self.initial_life = self.life
-        self.strength = 5
-        self.inventory = []
+        self.strength = strength
+        self.inventory = inventory
         self.description = 'A generic monster.'
         self.lost_fight = 'It takes a last breath and dies.'
         self.won_fight = 'The last what you see of it are its evil eyes.'
@@ -25,3 +25,6 @@ class Monster():
         else:
             print(self.lost_fight)
             self.loot()
+
+
+Ghoule = Monster(5, 5, [])

@@ -1,5 +1,6 @@
 # This is a basic version of the char class
 import dice
+from lib import reader
 
 
 class Character():
@@ -39,14 +40,6 @@ class Character():
             print('You have been wounded fatally. Game over...')
 
 
-coach_description = '''Your active years might reach a while back but
-        you are still fitter than most people your age.'''
-mechanic_description = '''You are good with fixing things,
-        especially with your favorite tool, the Fixxer(TM) Multitool.'''
-zookeeper_description = '''You work the Petshop day and night only
-        accompanied by your pet companion "Manny the Mouse".'''
-
-
 def char_selector():
     char_selection = ''
     while char_selection.upper() not in ['A', 'B', 'C']:
@@ -57,8 +50,8 @@ def char_selector():
         ''')
 
         if (char_selection.upper() == 'A'):
-            return Character('Coach', 60, 60, [], coach_description)
+            return Character('Coach', 60, 60, [], reader.parse('./txt/char_related.txt', '{CCC0}'))
         elif (char_selection.upper() == 'B'):
-            return Character('Mechanic', 50, 40, ['Multitool'], mechanic_description)
+            return Character('Mechanic', 50, 40, ['Multitool'], reader.parse('./txt/char_related.txt', '{CCM0}'))
         elif (char_selection.upper() == 'C'):
-            return Character('Zookeeper', 40, 30, ['Mouse'],  zookeeper_description)
+            return Character('Zookeeper', 40, 30, ['Mouse'], reader.parse('./txt/char_related.txt', '{CCZ0}'))

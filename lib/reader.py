@@ -14,6 +14,13 @@ def read(path, key):
             print(text)
 
 
+def parse(path, key):
+    with open(path, 'r') as file:
+        for line in find_line(key, file):
+            text = line[6:]
+            return text
+
+
 def timeout(s):
     sleep(s)
 
