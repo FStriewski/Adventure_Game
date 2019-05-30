@@ -1,3 +1,19 @@
+
+node = {
+    room_id: '', # roomid
+    visited: false # bool
+}
+
+room = {
+    initial_description: '', #string
+    connectorA: '',
+    connectorB: '',
+    connectorC: '',
+
+}
+
+
+
 state = {
     'visited_rooms': []
 }
