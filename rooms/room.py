@@ -39,17 +39,23 @@ class Room():
 
     def __init__(self, room_id):
         self.name = reader.parse(self.PATH, ''.join((room_id, 'N')))
-        self.description = reader.parse(self.PATH, ''.join((room_id, 'N')))
+        self.description = reader.parse(self.PATH, ''.join((room_id, 'D')))
         self.visited = 'false'
         self.room_id = room_id
         self.connectors = []  # Connectors(room_id)
-        # is static, doesn't update state
         self.choices = Choices(room_id).choices
+
+    def init_room(self):
+        print(self.name)
+        print(self.description)
+
+        if len(self.choices) > 0:
+            self.get_choices()
 
     def set_visited(self):
         self.visited = 'true'
 
-    def exhaust(self, id):
+    def exhaust_choice(self, id):
         for choice in self.choices:
             if choice['id'] == id:
                 choice['exhausted'] = 'true'
@@ -63,7 +69,7 @@ class Room():
 # needs to exclude exhausted items of gen instead static list
         while selection.upper() not in ['A', 'B', 'C']:
             selection = input('Select: ')
-            self.exhaust(selection)
+            self.exhaust_choice(selection)
 
 #        for choice in self.choices:
 #            print(choice['exhausted'])
