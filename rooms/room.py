@@ -12,16 +12,19 @@ class Choices():
             {
              'id': 'A',
              'descriptor': self.reader_lookup('A'),
+             'description': self.reader_lookup('X'),
              'exhausted': 'false',
              },
             {
              'id': 'B',
              'descriptor': self.reader_lookup('B'),
+             'description': self.reader_lookup('Y'),
              'exhausted': 'false',
             },
             {
              'id': 'C',
              'descriptor': self.reader_lookup('C'),
+             'description': self.reader_lookup('Z'),
              'exhausted': 'false',
 
             }
@@ -56,7 +59,7 @@ class Room():
         selection = ''
 
         for choice in gen:
-            print(choice['descriptor'])
+            print(choice['id'] + '    ' + choice['descriptor'])
 # needs to exclude exhausted items of gen instead static list
         while selection.upper() not in ['A', 'B', 'C']:
             selection = input('Select: ')

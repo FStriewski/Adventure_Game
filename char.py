@@ -41,7 +41,7 @@ class Character():
 
 
 def char_selector():
-    PATH = './txt/char_related.txt'
+    PATH = './txt/character.txt'
     char_selection = ''
 
     while char_selection.upper() not in ['A', 'B', 'C']:

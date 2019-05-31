@@ -1,0 +1,4 @@
+#Text used for character creation
+{CCC0}Your active years might date a while back but you are still fitter than most people your age.
+{CCM0}You are good with fixing things, especially with your favorite tool, the Fixxer(TM) Multitool.
+{CCZ0}You work the Petshop day and night - only accompanied by your pet companion, "Manny the Mouse.
