@@ -70,22 +70,3 @@ class Room():
         while selection.upper() not in ['A', 'B', 'C']:
             selection = input('Select: ')
             self.exhaust_choice(selection)
-
-#        for choice in self.choices:
-#            print(choice['exhausted'])
-# reader.read(self.PATH, 'KEY')
-        # user pick choice - choices.exhaust(id)
-
-
-class Lobby(Room):
-    def __init__(self):
-        self.name = 'Lobby'
-        self.description = 'First Lobby'
-        self.id = 'X01'
-
-
-class Lobby_2(Room):
-    def __init__(self):
-        self.name = 'Lobby2'
-        self.description = 'Second Lobby'
-        self.id = 'X02'
