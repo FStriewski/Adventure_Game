@@ -41,7 +41,9 @@ class Character():
 
 
 def char_selector():
+    PATH = './txt/char_related.txt'
     char_selection = ''
+
     while char_selection.upper() not in ['A', 'B', 'C']:
         char_selection = input('''--> Select a character: \n
         A) The Adventurer \n
@@ -50,8 +52,8 @@ def char_selector():
         ''')
 
         if (char_selection.upper() == 'A'):
-            return Character('Coach', 60, 60, [], reader.parse('./txt/char_related.txt', '{CCC0}'))
+            return Character('Coach', 60, 60, [], reader.parse(PATH, '{CCC0}'))
         elif (char_selection.upper() == 'B'):
-            return Character('Mechanic', 50, 40, ['Multitool'], reader.parse('./txt/char_related.txt', '{CCM0}'))
+            return Character('Mechanic', 50, 40, ['Multitool'], reader.parse(PATH, '{CCM0}'))
         elif (char_selection.upper() == 'C'):
-            return Character('Zookeeper', 40, 30, ['Mouse'], reader.parse('./txt/char_related.txt', '{CCZ0}'))
+            return Character('Zookeeper', 40, 30, ['Mouse'], reader.parse(PATH, '{CCZ0}'))
