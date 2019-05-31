@@ -8,6 +8,10 @@ def find_line(key, path):
 
 
 def read(path, key):
+    if (key.length != 6):
+        print('ERROR: Malformed key')
+        return None
+
     with open(path, 'r') as file:
         for line in find_line(key, file):
             text = line[6:]
