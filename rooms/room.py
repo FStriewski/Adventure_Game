@@ -30,9 +30,6 @@ class Choices():
     def reader_lookup(self, id):
         return reader.parse(self.PATH, ''.join((self.room_id, id)))
 
-    def exhaust(self, id):
-        self.id['exhausted'] = 'true'
-
 
 class Room():
     PATH = './txt/rooms.txt'
@@ -43,17 +40,31 @@ class Room():
         self.visited = 'false'
         self.room_id = room_id
         self.connectors = []  # Connectors(room_id)
+        # is static, doesn't update state
         self.choices = Choices(room_id).choices
 
     def set_visited(self):
         self.visited = 'true'
 
-    def get_choices(self):
-        # if 2/3 choices exhausted, reroute
-
+    def exhaust(self, id):
         for choice in self.choices:
+            if choice['id'] == id:
+                choice['exhausted'] = 'true'
+
+    def get_choices(self):
+        gen = (choice for choice in self.choices if choice['exhausted'] != 'true')
+        selection = ''
+
+        for choice in gen:
             print(choice['descriptor'])
-            # reader.read(self.PATH, 'KEY')
+# needs to exclude exhausted items of gen instead static list
+        while selection.upper() not in ['A', 'B', 'C']:
+            selection = input('Select: ')
+            self.exhaust(selection)
+
+#        for choice in self.choices:
+#            print(choice['exhausted'])
+# reader.read(self.PATH, 'KEY')
         # user pick choice - choices.exhaust(id)
 
 
