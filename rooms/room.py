@@ -1,9 +1,9 @@
 # Room definition
-import reader
+from lib import reader
 
 
 class Choices():
-    PATH = '../txt/rooms.txt'
+    PATH = './txt/rooms.txt'
 
     def __init__(self, room_id):
 
@@ -28,31 +28,32 @@ class Choices():
         ]
 
     def reader_lookup(self, id):
-        return reader.parse(self.PATH, self.room_id.concat(id))
+        return reader.parse(self.PATH, ''.join((self.room_id, id)))
 
     def exhaust(self, id):
         self.id['exhausted'] = 'true'
 
 
 class Room():
-    PATH = '../txt/rooms.txt'
+    PATH = './txt/rooms.txt'
 
-    def __init__(self, room_id, connectors, choices):
-        self.name = reader.parse(self.PATH, room_id.concat('N'))
-        self.description = reader.parse(self.PATH, room_id.concat('D'))
+    def __init__(self, room_id):
+        self.name = reader.parse(self.PATH, ''.join((room_id, 'N')))
+        self.description = reader.parse(self.PATH, ''.join((room_id, 'N')))
         self.visited = 'false'
         self.room_id = room_id
-        self.connectors = connectors
-        self.choices = Choices(room_id)
+        self.connectors = []  # Connectors(room_id)
+        self.choices = Choices(room_id).choices
 
     def set_visited(self):
         self.visited = 'true'
 
-    def get_choices(self, choices):
+    def get_choices(self):
         # if 2/3 choices exhausted, reroute
 
-        for choice in choices:
-            reader.read(self.PATH, 'KEY')
+        for choice in self.choices:
+            print(choice['descriptor'])
+            # reader.read(self.PATH, 'KEY')
         # user pick choice - choices.exhaust(id)
 
 
