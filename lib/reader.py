@@ -4,11 +4,16 @@ from time import sleep
 
 
 def find_line(key, path):
-    return [line for line in path if key in line]
+    parsed_line = [line for line in path if key in line]
+    if parsed_line != []:
+        return parsed_line
+    else:
+        return 'Output Error: Key not found'
 
 
-def read(path, key):
-    if (key.length != 6):
+def read(path, id):
+    key = '{{{}}}'.format(id)
+    if (key.length != 4):
         print('ERROR: Malformed key')
         return None
 
@@ -18,7 +23,8 @@ def read(path, key):
             print(text)
 
 
-def parse(path, key):
+def parse(path, id):
+    key = '{{{}}}'.format(id)
     with open(path, 'r') as file:
         for line in find_line(key, file):
             text = line[6:]
