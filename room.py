@@ -68,7 +68,7 @@ class Room():
             print(choice['id'] + '    ' + choice['descriptor'])
         while selection.upper() not in sel_list:
             selection = input('Select: ')
-            self.exhaust_choice(selection)
+        self.exhaust_choice(selection)
         return None
 
 
@@ -76,4 +76,6 @@ def stage_loader(room_id):
     # state.push(room_id) - use for count and blocking revisits
     stage = Room(room_id)
     stage.init_room()
+
+    stage.get_choices()
     stage.get_choices()
