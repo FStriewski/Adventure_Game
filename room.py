@@ -64,21 +64,37 @@ class Room():
             if choice['id'] == id:
                 choice['exhausted'] = 'true'
 
+    def read_choice(self, id):
+        for choice in self.choices:
+            if choice['id'] == id:
+                print(choice['description'])
+
+    def reroute(self):
+        print('rerouting')
+        pass
+
     def get_choices(self):
         gen = (choice for choice in self.choices if choice['exhausted'] != 'true')
-        print(gen)
+        choices= list(gen)
         selection = ''
         sel_list = []
 
-        for choice in gen:
-            sel_list.append(choice['id'])
-            print( choice['id'] + '    ' + choice['descriptor'])
-        while selection.upper() not in sel_list:
-            print(sel_list)
-            selection = input('Select: ').upper()
-        self.exhaust_choice(selection)
-        # Needs to filter and call with id
-        print(selection)
+        if(len(choices) > 1):
+
+            # display available choices:
+            for choice in choices:
+                sel_list.append(choice['id'])
+                print( choice['id'] + '    ' + choice['descriptor'])
+
+            # Get user input & update exhaust
+            while selection.upper() not in sel_list:
+                selection = input('Select: ').upper()
+            self.exhaust_choice(selection)
+            self.read_choice(selection)
+        
+        else:
+            self.reroute()
+
         return None
 
 
@@ -87,4 +103,7 @@ def stage_loader(room_id):
     stage = Room(room_id)
     stage.init_room()
 
+
     stage.get_choices()
+    stage.get_choices()
+
