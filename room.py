@@ -106,4 +106,7 @@ def stage_loader(room_id):
 
     stage.get_choices()
     stage.get_choices()
+    stage.get_choices()
+
+    ##implement rerouting
 
